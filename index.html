@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treasury & Equity Mastery</title>
+<meta name="description" content="Treasury & Equity Mastery Sheet, Levels 1 to 10: balance sheet, FX, repo, bonds, duration, yield curve, money markets, ALM, derivatives and equities.">
+<style>
+:root{
+  --bg:#f6f5f1; --surface:#ffffff; --ink:#1b1f24; --muted:#5d6670; --line:#e3e0d8;
+  --accent:#0f3d6e; --accent-soft:#e8eef6; --gold:#b07d1a; --gold-soft:#fbf3e2;
+  --ok:#1f7a4d; --code:#f2f0ea;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111418; --surface:#181c21; --ink:#e7e9ec; --muted:#9aa3ad; --line:#2a3038;
+    --accent:#8db8ea; --accent-soft:#1c2a3a; --gold:#e0b45c; --gold-soft:#2a2416;
+    --ok:#5fc495; --code:#20252c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111418; --surface:#181c21; --ink:#e7e9ec; --muted:#9aa3ad; --line:#2a3038;
+  --accent:#8db8ea; --accent-soft:#1c2a3a; --gold:#e0b45c; --gold-soft:#2a2416;
+  --ok:#5fc495; --code:#20252c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+.top-inner{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.top h1{font-size:17px;margin:0;font-weight:700;letter-spacing:.2px}
+.top .spacer{flex:1}
+.top input{width:220px;max-width:40vw;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px}
+.top button{padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);cursor:pointer;font:inherit;font-size:14px}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 80px;display:grid;grid-template-columns:240px 1fr;gap:32px}
+nav.side{position:sticky;top:76px;align-self:start;max-height:calc(100vh - 96px);overflow:auto}
+nav.side a{display:block;padding:6px 10px;border-radius:6px;color:var(--muted);text-decoration:none;font-size:14px}
+nav.side a:hover{background:var(--accent-soft);color:var(--ink)}
+nav.side a.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+nav.side .grp{margin:14px 10px 4px;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+main{min-width:0}
+.hero{margin-bottom:28px}
+.hero h2{font-size:30px;margin:0 0 6px;line-height:1.2}
+.hero p{margin:0;color:var(--muted)}
+.part{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:var(--gold);font-weight:700;margin:40px 0 8px}
+section.level{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:20px}
+.level h3{margin:0 0 14px;font-size:21px;display:flex;align-items:baseline;gap:10px}
+.level h3 .num{font-size:13px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:999px}
+.term{border-top:1px solid var(--line);padding:14px 0}
+.term:first-of-type{border-top:0;padding-top:0}
+.term h4{margin:0 0 6px;font-size:16.5px}
+.term p{margin:4px 0}
+.lbl{font-weight:600;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.5px;margin-right:6px}
+.formula{display:inline-block;background:var(--code);border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px}
+.ex{background:var(--gold-soft);border-left:3px solid var(--gold);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:6px}
+ul.plain{margin:6px 0 0;padding-left:20px}
+ul.plain li{margin:4px 0}
+.summary li{margin:8px 0}
+ol.q{padding-left:22px}
+ol.q > li{margin:12px 0}
+ol.q ul{margin:4px 0;padding-left:20px}
+details.ans{margin-top:6px}
+details.ans summary{cursor:pointer;color:var(--accent);font-size:14px;font-weight:600}
+details.ans div{margin-top:6px;padding:8px 12px;background:var(--accent-soft);border-radius:6px;font-size:15px}
+.hidden{display:none !important}
+mark{background:var(--gold-soft);color:inherit;padding:0 2px;border-radius:3px}
+footer{color:var(--muted);font-size:13px;margin-top:40px;text-align:center}
+@media (max-width:860px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  nav.side{display:none}
+  .top input{width:140px}
+  section.level{padding:18px 16px}
+  .hero h2{font-size:24px}
+}
+@media print{
+  header.top,nav.side,details.ans summary{display:none}
+  .wrap{display:block}
+  section.level{break-inside:avoid;border:0;padding:0}
+  details.ans{display:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <h1>Treasury & Equity Mastery</h1>
+    <span class="spacer"></span>
+    <input id="search" type="search" placeholder="Search terms…" aria-label="Search terms">
+    <button id="toggleAns" title="Show or hide all answers">Show answers</button>
+    <button id="theme" title="Toggle light/dark">◐</button>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="side" id="nav">
+  <div class="grp">Part 1 · Foundations</div>
+  <a href="#l1">1 · Balance Sheet & FX</a>
+  <a href="#l2">2 · Repos & Haircuts</a>
+  <a href="#l3">3 · Bond Yields & Maturity</a>
+  <a href="#l4">4 · Credit Premiums</a>
+  <a href="#s1">Summary 1–4</a>
+  <a href="#q1">Practice 1–4</a>
+  <a href="#infl">Inflation Types</a>
+  <div class="grp">Part 2 · Advanced</div>
+  <a href="#l5">5 · Duration & Rate Risk</a>
+  <a href="#l6">6 · The Yield Curve</a>
+  <a href="#l7">7 · Money Markets & Carry</a>
+  <a href="#l8">8 · Liquidity & ALM</a>
+  <a href="#l9">9 · Hedging & Derivatives</a>
+  <a href="#l10">10 · Equities & Trading Risk</a>
+  <a href="#s2">Summary 5–10</a>
+  <a href="#q2">Practice 5–10</a>
+  <a href="#curve">Yield Curve Moves</a>
+</nav>
+
+<main id="content">
+<div class="hero">
+  <h2>Treasury & Equity Mastery Sheet</h2>
+  <p>Levels 1 to 10 · definitions, formulas and clean worked examples, with practice questions and answers.</p>
+</div>
+
+<div class="part">Part 1 · Foundations</div>
+
+<section class="level" id="l1">
+  <h3><span class="num">Level 1</span>Balance Sheet & Foreign Exchange (FX)</h3>
+  <div class="term">
+    <h4>The Balance Sheet</h4>
+    <p><span class="lbl">Definition</span>A financial snapshot of what a bank owns (Assets), what it owes to others (Liabilities), and what is left over for the owners (Equity).</p>
+    <p><span class="lbl">Formula</span><span class="formula">Equity = Assets − Liabilities</span></p>
+    <p class="ex"><span class="lbl">Example</span>A bank holds $100 in cash/bonds and owes $90 to depositors. Its Equity is $10. If asset values drop by $5, equity drops to $5.</p>
+  </div>
+  <div class="term">
+    <h4>FX Forward (Locking Exchange Rates)</h4>
+    <p><span class="lbl">Definition</span>A contract that locks in an exchange rate today for a currency trade happening on a future date, to avoid losing money if exchange rates shift.</p>
+    <p class="ex"><span class="lbl">Example</span>You expect to receive 100 Euros next month and fear the Euro will fall. You sign an FX Forward today locking in $110, guaranteeing your payout regardless of market drops.</p>
+  </div>
+</section>
+
+<section class="level" id="l2">
+  <h3><span class="num">Level 2</span>Overnight Repos & Haircuts</h3>
+  <div class="term">
+    <h4>Overnight Repo (Repurchase Agreement)</h4>
+    <p><span class="lbl">Definition</span>A short-term 24-hour loan where a bank hands over a Treasury bond as collateral for cash today and buys it back tomorrow with interest.</p>
+    <p class="ex"><span class="lbl">Example</span>At 4:00 PM, your bank hands over a bond to borrow cash to pay depositors. At 8:00 AM tomorrow, you repay the cash plus 1 day of interest and get your bond back.</p>
+  </div>
+  <div class="term">
+    <h4>The Haircut</h4>
+    <p><span class="lbl">Definition</span>A percentage reduction taken off collateral value by a lender to shield themselves against bond price drops.</p>
+    <p class="ex"><span class="lbl">Example</span>You offer a $100 bond as collateral. The lender applies a 2% haircut and lends you $98 cash, keeping $2 as a protective cushion.</p>
+  </div>
+  <div class="term">
+    <h4>Margin Call</h4>
+    <p><span class="lbl">Definition</span>A demand by a lender for extra cash or bonds when pledged collateral drops in market value, restoring their safety buffer.</p>
+    <p class="ex"><span class="lbl">Example</span>You borrowed $98 against a $100 bond. The bond's market price drops to $90. The lender issues a margin call, demanding $10 in cash immediately to rebuild their safety margin.</p>
+  </div>
+</section>
+
+<section class="level" id="l3">
+  <h3><span class="num">Level 3</span>Bond Yields, Pricing & Maturity</h3>
+  <div class="term">
+    <h4>The Yield Seesaw Law</h4>
+    <p><span class="lbl">Definition</span>Bond prices and yields (interest rates) always move in opposite directions. When market interest rates rise, existing bond prices fall.</p>
+    <p class="ex"><span class="lbl">Example</span>You hold a 3% bond ($1,000). New bonds start paying 5%. To sell your older 3% bond on the open market, you must discount its price to $900 so the buyer gets a fair deal.</p>
+  </div>
+  <div class="term">
+    <h4>Maturity & The Secondary Market</h4>
+    <p><span class="lbl">Definition</span>Maturity is the official expiration date when the government repays 100% of the bond's original principal. The Secondary Market is the open market where bonds can be traded any time before maturity.</p>
+    <p class="ex"><span class="lbl">Example</span>A 10-Year Treasury expires in 2036. You can hold it until 2036 to collect payouts, or sell it early to another investor on the secondary market whenever you need immediate cash.</p>
+  </div>
+  <div class="term">
+    <h4>Paper Loss vs. Realized Loss</h4>
+    <p><span class="lbl">Definition</span>A paper loss is a temporary drop in market price while you still own the bond. A realized loss happens when you sell early at a discount, locking in a permanent loss.</p>
+    <p class="ex"><span class="lbl">Example</span>Your $100 bond drops to $85. If you hold to maturity, the government repays $100 (the paper loss vanishes). If sold today, you lock in a $15 realized loss.</p>
+  </div>
+  <div class="term">
+    <h4>The 5 Price-Dropping Triggers</h4>
+    <p><span class="lbl">Definition</span>Macroeconomic forces that push yields up and bond prices down: High Inflation, Growing National Debt, Geopolitical Tensions, Central Bank Rate Hikes, and Heavy Bond Supply.</p>
+  </div>
+</section>
+
+<section class="level" id="l4">
+  <h3><span class="num">Level 4</span>Yields, Risk & Credit Premiums</h3>
+  <div class="term">
+    <h4>Credit Risk Premium ("Friend A vs. Friend B")</h4>
+    <p><span class="lbl">Definition</span>Extra interest offered by risky borrowers to compensate lenders for taking on default risk. High yield = high risk.</p>
+    <p class="ex"><span class="lbl">Example</span>Safe "Friend A" (Apple or the US Government) offers a 3% yield. Risky "Friend B" offers an 18% yield because they might go bankrupt. The 18% isn't free money; it compensates for the high chance of getting $0 back.</p>
+  </div>
+</section>
+
+<section class="level" id="s1">
+  <h3><span class="num">Summary</span>Levels 1–4: Everything You've Covered</h3>
+  <ul class="plain summary">
+    <li><strong>Bank Solvency:</strong> Net worth is Equity (Assets − Liabilities). If bond values drop significantly, equity absorbs the loss, creating risk for the bank.</li>
+    <li><strong>1-Day Liquidity:</strong> Banks use Overnight Repos to borrow cash for 24 hours using Treasuries as collateral, while lenders enforce a Haircut to safeguard the loan.</li>
+    <li><strong>Open Market Realities:</strong> Bonds trade daily on secondary markets. Selling early during rate hikes forces a Discounted Price and a Realized Loss, whereas holding until Maturity returns 100% of principal.</li>
+    <li><strong>Risk vs. Return:</strong> Higher Yield = Higher Risk. Extra payout compensates for inflation or borrower default risk.</li>
+  </ul>
+</section>
+
+<section class="level" id="q1">
+  <h3><span class="num">Practice</span>Review Questions: Levels 1–4</h3>
+  <ol class="q">
+    <li>A bank holds $500 million in Assets and $460 million in Liabilities. If a market shock reduces its Assets by $25 million, what is the bank's new Equity?
+      <details class="ans"><summary>Answer</summary><div>Starting equity = $500M − $460M = $40M. Assets fall to $475M, so new equity = $475M − $460M = <strong>$15 million</strong>.</div></details></li>
+    <li>Your Treasury desk pledges a $1,000,000 bond into an overnight repo with a lender who requires a 3% haircut. How much cash does the lender hand over?
+      <details class="ans"><summary>Answer</summary><div>$1,000,000 × (1 − 3%) = <strong>$970,000</strong>. The lender keeps a $30,000 cushion.</div></details></li>
+    <li>You buy a 10-year Treasury bond for $1,000 at a 3% interest rate. Rates rise and similar new bonds now offer 6%. If you need cash today, will you sell at a premium or a discount, and why?
+      <details class="ans"><summary>Answer</summary><div><strong>At a discount</strong> (below $1,000). A buyer can get 6% on a new bond, so they will only take your 3% bond at a lower price that lifts their effective yield to match.</div></details></li>
+    <li>An investor buys a $100 bond. Due to inflation concerns, the price drops to $88.
+      <ul><li>What is the paper loss if the investor holds?</li><li>What is the realized loss if sold today?</li><li>How much does the government repay at maturity?</li></ul>
+      <details class="ans"><summary>Answer</summary><div>Paper loss: <strong>$12</strong>. Realized loss if sold today: <strong>$12</strong>. Repaid at maturity: <strong>$100</strong>, so the paper loss disappears if held.</div></details></li>
+    <li>Company Alpha offers a 4% yield while Company Beta offers 22%. Why is Beta's yield so much higher, and what main risk does a lender take?
+      <details class="ans"><summary>Answer</summary><div>Beta is far riskier, so it must pay a large credit risk premium to attract lenders. The main risk is <strong>default risk</strong>: Beta may fail to pay interest or principal, leaving the lender with little or nothing back.</div></details></li>
+  </ol>
+</section>
+
+<section class="level" id="infl">
+  <h3><span class="num">Extra</span>Common Types of Inflation</h3>
+  <div class="term">
+    <h4>Demand-Pull Inflation ("Too much money chasing too few goods")</h4>
+    <p class="ex"><span class="lbl">Example</span>Before a major holiday, demand for toys and clothes jumps sharply. Stores see more people want to buy, so they raise prices.</p>
+  </div>
+  <div class="term">
+    <h4>Cost-Push Inflation ("Rising production costs")</h4>
+    <p class="ex"><span class="lbl">Example</span>Crude oil prices rise globally. Delivery trucks and factories pay much more for fuel, and companies pass these higher costs on to shoppers through higher shelf prices.</p>
+  </div>
+  <div class="term">
+    <h4>Shrinkflation ("Hidden inflation")</h4>
+    <p class="ex"><span class="lbl">Example</span>A box of cereal stays at $5.00, but the weight inside drops from 20 ounces to 18 ounces. You pay the same price for less product.</p>
+  </div>
+</section>
+
+<div class="part">Part 2 · Advanced</div>
+
+<section class="level" id="l5">
+  <h3><span class="num">Level 5</span>Duration & Interest Rate Risk</h3>
+  <div class="term">
+    <h4>Basis Point (bp)</h4>
+    <p><span class="lbl">Definition</span>The standard unit for measuring interest rate moves. One basis point equals 0.01%, so 100 basis points equals 1%.</p>
+    <p class="ex"><span class="lbl">Example</span>A yield moves from 4.25% to 4.50%. That is a 25 basis point (25bp) rise.</p>
+  </div>
+  <div class="term">
+    <h4>Duration</h4>
+    <p><span class="lbl">Definition</span>A measure of how sensitive a bond's price is to a change in interest rates. The higher the duration, the bigger the price swing.</p>
+    <p><span class="lbl">Formula</span><span class="formula">% Price Change ≈ −Duration × Change in Yield</span></p>
+    <p class="ex"><span class="lbl">Example</span>A bond priced at $1,000 has a duration of 7. Yields rise by 1%. The price falls about 7%, to roughly $930.</p>
+  </div>
+  <div class="term">
+    <h4>DV01 (Dollar Value of 1 Basis Point)</h4>
+    <p><span class="lbl">Definition</span>The dollar amount a bond position gains or loses when yields move by 0.01%. Desks use it to size and compare risk across positions.</p>
+    <p><span class="lbl">Formula</span><span class="formula">DV01 = Position Size × Duration × 0.0001</span></p>
+    <p class="ex"><span class="lbl">Example</span>A $10,000,000 bond with a duration of 5 has a DV01 of $5,000. If yields rise 10bp, the position loses about $50,000.</p>
+  </div>
+  <div class="term">
+    <h4>Convexity</h4>
+    <p><span class="lbl">Definition</span>The price-yield relationship is a curve rather than a straight line. For the same size of move, a bond gains more when yields fall than it loses when yields rise.</p>
+    <p class="ex"><span class="lbl">Example</span>A bond with a duration of 7 rises slightly more than 7% if yields fall 1%, and falls slightly less than 7% if yields rise 1%.</p>
+  </div>
+</section>
+
+<section class="level" id="l6">
+  <h3><span class="num">Level 6</span>The Yield Curve</h3>
+  <div class="term">
+    <h4>The Yield Curve</h4>
+    <p><span class="lbl">Definition</span>A line plotting the yields of bonds from the same issuer, usually the government, across different maturities, from 3 months out to 30 years.</p>
+    <p class="ex"><span class="lbl">Example</span>3-month bill at 4.0%, 2-year at 3.6%, 10-year at 4.2%, 30-year at 4.6%. Joining these points draws the curve.</p>
+  </div>
+  <div class="term">
+    <h4>The 3 Curve Shapes</h4>
+    <ul class="plain">
+      <li><strong>Normal (upward sloping):</strong> Long-term yields are higher than short-term yields. Lenders want extra pay for locking money away longer.</li>
+      <li><strong>Inverted (downward sloping):</strong> Short-term yields are higher than long-term yields. Markets expect rate cuts ahead, and it is often read as a recession warning.</li>
+      <li><strong>Flat:</strong> Short and long yields are roughly equal. Markets are uncertain about direction.</li>
+    </ul>
+  </div>
+  <div class="term">
+    <h4>The 2s10s Spread</h4>
+    <p><span class="lbl">Definition</span>The 10-year yield minus the 2-year yield. It is the most watched single measure of the curve's shape.</p>
+    <p><span class="lbl">Formula</span><span class="formula">2s10s = 10-Year Yield − 2-Year Yield</span></p>
+    <p class="ex"><span class="lbl">Example</span>10-year at 4.5% minus 2-year at 3.5% gives a spread of +1.00% (+100bp), which is a normal curve. A negative number means the curve is inverted.</p>
+  </div>
+  <div class="term">
+    <h4>Steepening vs. Flattening</h4>
+    <p><span class="lbl">Definition</span>Steepening means the gap between long and short yields widens. Flattening means the gap narrows.</p>
+    <p class="ex"><span class="lbl">Example</span>The 2s10s spread moves from +50bp to +120bp, so the curve has steepened by 70bp.</p>
+  </div>
+</section>
+
+<section class="level" id="l7">
+  <h3><span class="num">Level 7</span>Money Markets, Policy Rates & Carry</h3>
+  <div class="term">
+    <h4>Central Bank Policy Rate</h4>
+    <p><span class="lbl">Definition</span>The overnight interest rate set by the central bank. It anchors every other short-term rate in the economy.</p>
+    <p class="ex"><span class="lbl">Example</span>The US Federal Reserve cuts its rate by 0.25%. Because the dirham is pegged to the US dollar at 3.6725, the CBUAE normally moves its Base Rate by the same amount, the same day.</p>
+  </div>
+  <div class="term">
+    <h4>Interbank Benchmarks (SOFR, EIBOR)</h4>
+    <p><span class="lbl">Definition</span>Published reference rates showing what banks pay to borrow short-term money. Loans, deposits and derivatives are priced as "benchmark + margin."</p>
+    <p class="ex"><span class="lbl">Example</span>A corporate loan priced at 3-month EIBOR + 2%. If EIBOR is 4%, the borrower pays 6%. When EIBOR resets to 3.75%, the borrower pays 5.75%.</p>
+  </div>
+  <div class="term">
+    <h4>Net Interest Margin (NIM)</h4>
+    <p><span class="lbl">Definition</span>The gap between what a bank earns on its loans and investments and what it pays on its deposits and borrowings. It is a bank's core profit engine.</p>
+    <p class="ex"><span class="lbl">Example</span>The bank earns 6% on loans and pays 3% on deposits. Its margin is roughly 3%.</p>
+  </div>
+  <div class="term">
+    <h4>Carry</h4>
+    <p><span class="lbl">Definition</span>The profit earned from holding an asset that yields more than the cost of funding it.</p>
+    <p><span class="lbl">Formula</span><span class="formula">Carry = (Asset Yield − Funding Cost) × Position Size</span></p>
+    <p class="ex"><span class="lbl">Example</span>Buy a $10,000,000 bond yielding 5% and fund it in repo at 4%. The carry is 1%, which is $100,000 per year, provided the bond price holds.</p>
+  </div>
+</section>
+
+<section class="level" id="l8">
+  <h3><span class="num">Level 8</span>Liquidity & Asset-Liability Management (ALM)</h3>
+  <div class="term">
+    <h4>Maturity Mismatch</h4>
+    <p><span class="lbl">Definition</span>Banks borrow short and lend long. Deposits can leave within weeks while loans and bonds take years to repay.</p>
+    <p class="ex"><span class="lbl">Example</span>3-month customer deposits are funding 5-year mortgages. If depositors withdraw at month 3, the bank still has 57 months to wait for the loan money.</p>
+  </div>
+  <div class="term">
+    <h4>Liquidity Gap</h4>
+    <p><span class="lbl">Definition</span>The difference between the cash a bank will receive and the cash it must pay out within a given time window.</p>
+    <p><span class="lbl">Formula</span><span class="formula">Liquidity Gap = Maturing Assets − Maturing Liabilities (per time bucket)</span></p>
+    <p class="ex"><span class="lbl">Example</span>Within 1 month, $200M of deposits mature and only $120M of assets mature. The gap is −$80M, which must be covered through repo, interbank borrowing or bond sales.</p>
+  </div>
+  <div class="term">
+    <h4>Liquidity Buffer</h4>
+    <p><span class="lbl">Definition</span>A stock of high-quality assets, such as cash, central bank balances and government bonds, that can be turned into cash immediately in a stress event.</p>
+    <p class="ex"><span class="lbl">Example</span>The bank holds $300M of government bonds it can repo the same day. That buffer covers a sudden $150M deposit outflow without forced selling.</p>
+  </div>
+  <div class="term">
+    <h4>Interest Rate Repricing Gap</h4>
+    <p><span class="lbl">Definition</span>The mismatch between when a bank's assets and liabilities reset to new interest rates.</p>
+    <p class="ex"><span class="lbl">Example</span>Deposits reprice monthly while bonds are fixed for 5 years. If rates rise, deposit costs climb immediately but bond income stays flat, so the margin is squeezed.</p>
+  </div>
+  <div class="term">
+    <h4>ALCO (Asset & Liability Committee)</h4>
+    <p><span class="lbl">Definition</span>The senior management committee that sets and monitors the bank's liquidity, funding and interest rate risk limits.</p>
+  </div>
+</section>
+
+<section class="level" id="l9">
+  <h3><span class="num">Level 9</span>Hedging & Derivatives</h3>
+  <div class="term">
+    <h4>Interest Rate Swap (IRS)</h4>
+    <p><span class="lbl">Definition</span>An agreement to exchange fixed interest payments for floating interest payments on a notional amount. No principal changes hands.</p>
+    <p class="ex"><span class="lbl">Example</span>A company has a loan at SOFR + 1%. It enters a swap paying 4% fixed and receiving SOFR. The SOFR legs cancel out, locking its all-in cost at 5% regardless of where rates go.</p>
+  </div>
+  <div class="term">
+    <h4>FX Swap</h4>
+    <p><span class="lbl">Definition</span>Exchanging two currencies today and agreeing to reverse the exchange on a future date at a pre-agreed rate. It is used to fund in one currency using another.</p>
+    <p class="ex"><span class="lbl">Example</span>The bank has spare AED but needs USD for 1 month. It swaps AED 36.725M for $10M today and swaps back in 1 month at the agreed forward rate.</p>
+  </div>
+  <div class="term">
+    <h4>Notional vs. Real Exposure</h4>
+    <p><span class="lbl">Definition</span>The notional is the reference amount used to calculate payments. The actual risk is far smaller and depends on rate moves.</p>
+    <p class="ex"><span class="lbl">Example</span>A $50M swap does not put $50M at risk. Only the interest difference between the fixed and floating legs is exchanged.</p>
+  </div>
+  <div class="term">
+    <h4>Options (Calls & Puts)</h4>
+    <p><span class="lbl">Definition</span>The right, but not the obligation, to buy (call) or sell (put) at a fixed price (strike) by a set date. The buyer pays a premium up front.</p>
+    <p class="ex"><span class="lbl">Example</span>You buy a call with a strike of $100 for a $5 premium. If the stock rises to $120, you profit $15 ($20 gain minus $5 premium). If it falls to $90, you walk away and lose only the $5 premium.</p>
+  </div>
+  <div class="term">
+    <h4>Hedge</h4>
+    <p><span class="lbl">Definition</span>A position taken to offset the risk of another position, so that losses on one are covered by gains on the other.</p>
+  </div>
+</section>
+
+<section class="level" id="l10">
+  <h3><span class="num">Level 10</span>Equities & Trading Risk</h3>
+  <div class="term">
+    <h4>Market Capitalisation</h4>
+    <p><span class="lbl">Definition</span>The total market value of a company's shares.</p>
+    <p><span class="lbl">Formula</span><span class="formula">Market Cap = Share Price × Shares Outstanding</span></p>
+    <p class="ex"><span class="lbl">Example</span>1 billion shares at AED 10 each gives a market cap of AED 10 billion.</p>
+  </div>
+  <div class="term">
+    <h4>Price-to-Earnings Ratio (P/E)</h4>
+    <p><span class="lbl">Definition</span>How many years of current profits investors are paying for. A high P/E signals high growth expectations or an expensive stock.</p>
+    <p><span class="lbl">Formula</span><span class="formula">P/E = Share Price ÷ Earnings Per Share (EPS)</span></p>
+    <p class="ex"><span class="lbl">Example</span>A share trades at AED 20 and earns AED 2 per share. Its P/E is 10.</p>
+  </div>
+  <div class="term">
+    <h4>Dividend Yield</h4>
+    <p><span class="lbl">Definition</span>The annual cash dividend as a percentage of the share price.</p>
+    <p><span class="lbl">Formula</span><span class="formula">Dividend Yield = Annual Dividend ÷ Share Price</span></p>
+    <p class="ex"><span class="lbl">Example</span>A AED 0.50 dividend on a AED 10 share gives a dividend yield of 5%.</p>
+  </div>
+  <div class="term">
+    <h4>Beta</h4>
+    <p><span class="lbl">Definition</span>How much a stock tends to move relative to the overall market. A beta of 1 moves with the market, above 1 is more volatile, and below 1 is calmer.</p>
+    <p class="ex"><span class="lbl">Example</span>A stock with a beta of 1.5 typically rises about 15% when the market rises 10%, and falls about 15% when the market falls 10%.</p>
+  </div>
+  <div class="term">
+    <h4>Mark-to-Market</h4>
+    <p><span class="lbl">Definition</span>Revaluing a trading position every day at its current market price, so gains and losses show up immediately in profit and loss.</p>
+    <p class="ex"><span class="lbl">Example</span>You bought 1M shares at AED 10. Today they close at AED 9.60. The position is marked down by AED 400,000 today, even though nothing was sold.</p>
+  </div>
+  <div class="term">
+    <h4>Stop-Loss</h4>
+    <p><span class="lbl">Definition</span>A pre-set exit price at which a losing position is closed to cap the damage.</p>
+    <p class="ex"><span class="lbl">Example</span>You buy at AED 10.00 with a stop at AED 9.50. If the price hits AED 9.50, you sell, limiting the loss to 5%.</p>
+  </div>
+  <div class="term">
+    <h4>Value at Risk (VaR)</h4>
+    <p><span class="lbl">Definition</span>A statistical estimate of the maximum expected loss over a set period at a given confidence level.</p>
+    <p class="ex"><span class="lbl">Example</span>A 1-day 95% VaR of $1M means that on 19 days out of 20, the desk should not lose more than $1M. On the 20th day, losses can be larger.</p>
+  </div>
+</section>
+
+<section class="level" id="s2">
+  <h3><span class="num">Summary</span>Levels 5–10: Everything You've Covered</h3>
+  <ul class="plain summary">
+    <li><strong>Rate Sensitivity:</strong> Duration and DV01 turn a rate move into a dollar loss or gain. Longer bonds carry more risk.</li>
+    <li><strong>Curve Reading:</strong> A normal curve rewards lending longer. An inverted curve warns that rate cuts or a slowdown lie ahead.</li>
+    <li><strong>Funding & Profit:</strong> Policy rates drive SOFR and EIBOR. Banks earn their margin and carry from the gap between what assets yield and what funding costs.</li>
+    <li><strong>Survival:</strong> Borrowing short and lending long creates liquidity gaps. A liquidity buffer and ALCO limits keep the bank solvent through a deposit run.</li>
+    <li><strong>Protection:</strong> Swaps lock in rates, FX swaps move funding between currencies, and options cap downside in exchange for a premium.</li>
+    <li><strong>Equity Risk:</strong> Valuation (P/E, dividend yield) tells you what you are paying. Beta, mark-to-market, stop-losses and VaR tell you what you could lose.</li>
+  </ul>
+</section>
+
+<section class="level" id="q2">
+  <h3><span class="num">Practice</span>Review Questions: Levels 5–10</h3>
+  <ol class="q">
+    <li>Your desk holds a $5,000,000 bond with a duration of 6. Yields rise by 0.50%. Roughly how much does the position lose? What is its DV01?
+      <details class="ans"><summary>Answer</summary><div>Price change ≈ −6 × 0.50% = −3%, so the loss is about <strong>$150,000</strong>. DV01 = $5,000,000 × 6 × 0.0001 = <strong>$3,000</strong> per basis point (50bp × $3,000 = $150,000).</div></details></li>
+    <li>The 2-year Treasury yields 4.2% and the 10-year yields 3.8%. What is the 2s10s spread in basis points, what shape is the curve, and what is the market signalling?
+      <details class="ans"><summary>Answer</summary><div>3.8% − 4.2% = <strong>−40bp</strong>. The curve is <strong>inverted</strong>. The market expects rate cuts ahead, often linked to an economic slowdown or recession.</div></details></li>
+    <li>You buy a $20,000,000 bond yielding 5.50% and fund it in repo at 4.25%. What is your annual carry in dollars? What could wipe that carry out?
+      <details class="ans"><summary>Answer</summary><div>(5.50% − 4.25%) × $20,000,000 = <strong>$250,000 per year</strong>. It can be wiped out by a fall in the bond's price (yields rising) or by repo funding costs rising toward or above 5.50%.</div></details></li>
+    <li>Within the next 30 days, $300M of deposits mature and only $210M of assets mature. What is the liquidity gap, and name two ways the treasury desk can cover it.
+      <details class="ans"><summary>Answer</summary><div>$210M − $300M = <strong>−$90M</strong>. It can be covered by repo-ing bonds from the liquidity buffer, borrowing in the interbank market, selling liquid bonds, or raising new deposits.</div></details></li>
+    <li>A company borrows at SOFR + 1.50% and enters a swap paying 3.75% fixed and receiving SOFR. What is its all-in fixed borrowing cost?
+      <details class="ans"><summary>Answer</summary><div>The SOFR it receives cancels the SOFR it pays on the loan, leaving 3.75% + 1.50% = <strong>5.25% fixed</strong>.</div></details></li>
+    <li>A share trades at AED 25, earns AED 2.50 per share, pays a AED 1.00 dividend and has a beta of 1.2.
+      <ul><li>What is its P/E?</li><li>What is its dividend yield?</li><li>If the market falls 5%, roughly how much should this share fall?</li></ul>
+      <details class="ans"><summary>Answer</summary><div>P/E = 25 ÷ 2.50 = <strong>10</strong>. Dividend yield = 1.00 ÷ 25 = <strong>4%</strong>. Expected move = 1.2 × −5% = <strong>about −6%</strong>.</div></details></li>
+    <li>You buy a call option with a strike of $50 for a $3 premium. What is your profit or loss if the stock finishes at $60? And at $45?
+      <details class="ans"><summary>Answer</summary><div>At $60: ($60 − $50) − $3 = <strong>+$7 profit</strong>. At $45: the option expires worthless, so the loss is the <strong>$3 premium</strong>.</div></details></li>
+  </ol>
+</section>
+
+<section class="level" id="curve">
+  <h3><span class="num">Extra</span>Common Types of Yield Curve Moves</h3>
+  <div class="term">
+    <h4>Parallel Shift ("Everything moves together")</h4>
+    <p class="ex"><span class="lbl">Example</span>The 2-year, 10-year and 30-year yields all rise by 0.25%. The curve keeps its shape but moves higher, and every bond in the portfolio loses value in proportion to its duration.</p>
+  </div>
+  <div class="term">
+    <h4>Bull Steepener ("Short end falls faster")</h4>
+    <p class="ex"><span class="lbl">Example</span>The central bank signals rate cuts. The 2-year yield drops 0.40% while the 10-year drops only 0.10%. Short-dated bonds rally hardest.</p>
+  </div>
+  <div class="term">
+    <h4>Bear Flattener ("Short end rises faster")</h4>
+    <p class="ex"><span class="lbl">Example</span>The central bank hikes rates to fight inflation. The 2-year jumps 0.50% while the 10-year rises only 0.15%. The curve flattens and can tip into inversion.</p>
+  </div>
+</section>
+
+<p id="noresults" class="hidden" style="color:var(--muted)">No terms match your search.</p>
+<footer>Treasury & Equity Mastery Sheet · Levels 1–10</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  try{var t=localStorage.getItem('tem-theme'); if(t) root.setAttribute('data-theme',t);}catch(e){}
+  document.getElementById('theme').addEventListener('click',function(){
+    var dark = root.getAttribute('data-theme')==='dark' ||
+      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('tem-theme',next);}catch(e){}
+  });
+
+  var btn=document.getElementById('toggleAns'), open=false;
+  btn.addEventListener('click',function(){
+    open=!open;
+    document.querySelectorAll('details.ans').forEach(function(d){d.open=open;});
+    btn.textContent=open?'Hide answers':'Show answers';
+  });
+
+  var input=document.getElementById('search');
+  var terms=[].slice.call(document.querySelectorAll('.term'));
+  var sections=[].slice.call(document.querySelectorAll('section.level'));
+  input.addEventListener('input',function(){
+    var q=input.value.trim().toLowerCase(), any=false;
+    terms.forEach(function(t){
+      var hit=!q||t.textContent.toLowerCase().indexOf(q)>-1;
+      t.classList.toggle('hidden',!hit);
+    });
+    sections.forEach(function(s){
+      var ts=s.querySelectorAll('.term');
+      var vis = q ? (ts.length ? s.querySelectorAll('.term:not(.hidden)').length>0 : s.textContent.toLowerCase().indexOf(q)>-1) : true;
+      s.classList.toggle('hidden',!vis);
+      if(vis) any=true;
+    });
+    document.querySelectorAll('.part').forEach(function(p){p.classList.toggle('hidden',!!q);});
+    document.getElementById('noresults').classList.toggle('hidden',any);
+  });
+
+  var links=[].slice.call(document.querySelectorAll('nav.side a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
+        }
+      });
+    },{rootMargin:'-80px 0px -70% 0px'});
+    sections.forEach(function(s){io.observe(s);});
+  }
+})();
+</script>
+</body>
+</html>
